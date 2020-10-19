@@ -4,27 +4,11 @@ const Department = require('./lib/Department')
 const Employee = require('./lib/Employee')
 const Role = require('./lib/Role')
 
-// const mysql = require('mysql2');
-
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     port: 3306,
-//     // Your MySQL username
-//     user: 'root',
-//     // Your MySQL password
-//     password: '11496899!Ri',
-//     database: 'employee_tracker'
-//   });
-
  connection.connect(err => {
     if (err) throw err;
     console.log('you in duh database sweetie')
     newTeam()
   });
-
-
-
-
 
 const newTeam = function () {
   const employeeCreation = () => {
@@ -283,8 +267,6 @@ INNER JOIN department ON role.department_id = department.id
           },
         ])
           .then(({ firstName, lastName, name, manager, role }) => {
-            console.log(name)
-            console.log(role)
             const employee = new Employee(firstName, lastName, role, manager, name)
             employee.updateRole()
           })
@@ -294,5 +276,3 @@ INNER JOIN department ON role.department_id = department.id
   employeeCreation()
 }
 
-
-module.exports = {newTeam};
