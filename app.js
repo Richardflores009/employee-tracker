@@ -16,11 +16,14 @@ const Role = require('./lib/Role')
 //     database: 'employee_tracker'
 //   });
 
-connection.connect(err => {
-  if (err) throw err;
-  console.log('you in duh database sweetie')
-  newTeam()
-});
+ connection.connect(err => {
+    if (err) throw err;
+    console.log('you in duh database sweetie')
+    newTeam()
+  });
+
+
+
 
 
 const newTeam = function () {
@@ -54,12 +57,16 @@ const newTeam = function () {
           employeeCreation()
         } else if (type === "Add a Department") {
           addDepartment();
+          employeeCreation();
         } else if (type === "Add a Role") {
           addRole();
+          employeeCreation();
         } else if (type === "Add an Employee") {
           addEmployee();
+          employeeCreation();
         } else if (type === "Update an Employee Role") {
           updateEmployeeRole();
+          employeeCreation();
         }
       })
   }
@@ -176,18 +183,6 @@ INNER JOIN department ON role.department_id = department.id
           name: name,
           value: id
         }));
-        console.log(departments)
-        // var departments = []
-        // connection.query(`SELECT department.name, department.id FROM department`, function(err, res, rows){
-        //   if (err) throw err;
-        //   // console.log('string', res)
-        //   Object.keys(res).forEach(function(key){
-
-        //     var row = res[key];
-        //     departments.push(row.name, row.id)
-        //   })
-        // })
-        // console.log(departments2)
         return inquirer.prompt([
           {
             type: "input",
@@ -225,8 +220,6 @@ INNER JOIN department ON role.department_id = department.id
 
         ])
           .then(({ title, salary, department }) => {
-            // const depId = getDepartmentById(department)
-            console.log('department id', department)
             const role = new Role(title, salary, department)
             role.createRoleInfo()
 
@@ -302,4 +295,4 @@ INNER JOIN department ON role.department_id = department.id
 }
 
 
-
+module.exports = {newTeam};
