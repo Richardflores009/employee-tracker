@@ -30,27 +30,25 @@ const newTeam = function () {
         if (type === "View ALL Departments") {
           const department = new Department()
           department.showDepartment()
-          employeeCreation()
+          newTeam()
         } else if (type === "View ALL Employees") {
           const employee = new Employee()
           employee.showEmployeeInfo()
-          employeeCreation()
+          newTeam()
         } else if (type === "View ALL Roles") {
           const role = new Role();
           role.showRoleInfo()
-          employeeCreation()
+          newTeam()
         } else if (type === "Add a Department") {
           addDepartment();
-          employeeCreation();
+          
         } else if (type === "Add a Role") {
           addRole();
-          employeeCreation();
         } else if (type === "Add an Employee") {
           addEmployee();
-          employeeCreation();
+
         } else if (type === "Update an Employee Role") {
           updateEmployeeRole();
-          employeeCreation();
         }
       })
   }
@@ -73,6 +71,9 @@ const newTeam = function () {
       .then(({ name }) => {
         const department = new Department(name)
         department.updateDepartment()
+         console.log(`You just added ${name} as a department`)
+        newTeam()
+       
       })
   }
 
@@ -154,6 +155,7 @@ INNER JOIN department ON role.department_id = department.id
 
             const employee = new Employee(firstName, lastName, role, manager)
             employee.createNewEmployee()
+            newTeam()
 
           })
       })
@@ -206,6 +208,7 @@ INNER JOIN department ON role.department_id = department.id
           .then(({ title, salary, department }) => {
             const role = new Role(title, salary, department)
             role.createRoleInfo()
+            newTeam()
 
           })
       })
@@ -213,18 +216,7 @@ INNER JOIN department ON role.department_id = department.id
 
 
 
-  async function getRoles() {
-    let query = "SELECT title FROM role";
-    const rows = await connection.query(query);
-    //console.log("Number of rows returned: " + rows.length);
 
-    let roles = [];
-    for (const row of rows) {
-      roles.push(row.title);
-    }
-
-    return roles;
-  }
 
 
   async function updateEmployeeRole() {
@@ -269,6 +261,7 @@ INNER JOIN department ON role.department_id = department.id
           .then(({ firstName, lastName, name, manager, role }) => {
             const employee = new Employee(firstName, lastName, role, manager, name)
             employee.updateRole()
+            newTeam()
           })
 
       })
@@ -276,3 +269,4 @@ INNER JOIN department ON role.department_id = department.id
   employeeCreation()
 }
 
+module.exports = {newTeam}
