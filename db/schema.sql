@@ -1,0 +1,22 @@
+CREATE TABLE employee(
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id SMALLINT UNSIGNED NOT NULL REFERENCES role(id),
+    manager_id SMALLINT UNSIGNED REFERENCES employee(id),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE role(
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL(6) UNSIGNED,
+    department_id SMALLINT UNSIGNED NOT NULL REFERENCES department(id),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE department(
+    id INT AUTO_INCREMENT,
+    name VARCHAR(30),
+    PRIMARY KEY(id)
+);
