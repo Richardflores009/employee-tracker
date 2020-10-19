@@ -22,11 +22,11 @@ The application gives yout the following options:
 
 2. Select from the menu to view, add, remove, or update employees, roles, departments, or managers
 
-![alt text](https://raw.githubusercontent.com/Richardflores009/Munch-A-Movie/master/assets/img/Screen%20Shot%202020-09-15%20at%2011.42.00.png "Top of webpage")
+![alt text](https://raw.githubusercontent.com/Richardflores009/employee-tracker/main/img/Screen%20Shot%202020-10-18%20at%2022.35.49.png "Top of webpage")
 
 3. Follow if presented
 
-![alt text](https://raw.githubusercontent.com/Richardflores009/Munch-A-Movie/master/assets/img/Screen%20Shot%202020-09-15%20at%2011.42.15.png "Bottom of Webpage")
+![alt text](https://raw.githubusercontent.com/Richardflores009/employee-tracker/main/img/Screen%20Shot%202020-10-18%20at%2022.35.32.png "Bottom of Webpage")
 
 ## Tool & Resources
 
